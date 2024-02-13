@@ -1,0 +1,32 @@
+<div class="row bg-primary">
+        <div class="col text-center" style="color: white;">{{productos.length}} PRODUCTOS</div>
+    </div>
+    <div class="row">
+        <div *ngIf="productos.length==0" class="col-12 bg-danger">
+            No hay productos
+        </div>
+    </div>
+    <div class="row fila_productos" *ngFor="let item of productos">
+        <div class="col">
+            {{item.nombre}}
+        </div>
+        <div class="col">
+            {{item.precio}}
+        </div>
+        <div class="col">
+            {{item.categoria}}
+        </div>
+    </div>
+<div class="row">
+    <div class="col-2">
+        <input type="text" #nombreproducto>
+        
+        <button (click)="eliminar(nombreproducto.value)" class="btn btn-primary" type="button">Eliminar</button>
+    </div>
+</div>
+<div class="warning bg-warning" *ngIf="eliminado!=null">
+    Elemento eliminado: {{eliminado.nombre}}, {{eliminado.precio}}, {{eliminado.categoria}}
+</div>
+<div class="warning bg-warning" *ngIf="encontrado==false">
+    Producto no encontrado
+</div>

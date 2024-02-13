@@ -1,0 +1,22 @@
+<div class="row bg-primary">
+    <div class="col text-center" style="color: white;">FORMULARIO</div>
+</div>
+<form novalidate (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="row">
+        <div class="col-5">
+            <input class="mt-2" type="text" #nombreusuario="ngModel" name="nombre" required [(ngModel)]="datosFormularios.nombre" placeholder="Nombre">
+            <div class="errors mb-2" *ngIf="nombreusuario.errors?.['required'] && nombreusuario.touched">
+                El nombre no puede estar vacio
+            </div>
+            <input class="mt-2" type="number" #edadusuario="ngModel" name="edad" [(ngModel)]="datosFormularios.edad" placeholder="Edad"
+            min="1">
+            <div class="errors mb-2" *ngIf="edadusuario.errors?.['min'] && edadusuario.touched">
+                No puede ser 0
+            </div>
+            <input class="my-2" type="text" #profesionusuario name="profesion" [(ngModel)]="datosFormularios.profesion"
+                placeholder="Profesion">
+            <button class="my-2" [disabled]="!form.valid" type="submit" id="submit" class="btn btn-primary" btn-lg btn-block>Enviar</button>
+        </div>
+    </div>
+    {{datosFormularios | json}}
+</form>

@@ -1,0 +1,32 @@
+<div class="row bg-primary">
+    <div class="col text-center" style="color: white;">{{usuarios.length}} USUARIOS</div>
+</div>
+<div class="row">
+    <div *ngIf="usuarios.length==0" class="col-12 bg-danger">
+        No hay usuarios
+    </div>
+</div>
+<div class="row fila_productos" *ngFor="let usuario of usuarios">
+    <div class="col">
+        {{usuario.nombre}}
+    </div>
+    <div class="col">
+        {{usuario.edad}}
+    </div>
+    <div class="col">
+        {{usuario.profesion}}
+    </div>
+</div>
+<div class="row">
+<div class="col-2">
+    <input type="text" #nombreUsuario>
+    
+    <button (click)="eliminar(nombreUsuario.value)" class="btn btn-primary" type="button">Borrar</button>
+</div>
+</div>
+<div class="warning bg-warning" *ngIf="eliminado!=null">
+Elemento eliminado: {{eliminado.nombre}}, {{eliminado.edad}}, {{eliminado.profesion}}
+</div>
+<div class="warning bg-warning" *ngIf="encontrado==false">
+Usuario no encontrado
+</div>
